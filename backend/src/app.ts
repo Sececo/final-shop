@@ -7,8 +7,8 @@ import jeanController from './controllers/jeanController';
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
-app.use('/shirts', shirtController);
-app.use('/jeans', jeanController);
+app.use('/api/v1/shirts', shirtController);
+app.use('/api/v1/jeans', jeanController);
 
 (async () => {
   try {
