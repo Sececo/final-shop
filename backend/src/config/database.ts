@@ -5,7 +5,7 @@ import { JeanModel } from "../models/jeanModel";
 
 export const sequelize = new Sequelize({
   dialect: "mysql",
-  host: "db",          // nombre del servicio en docker-compose
+  host: 'localhost',          // nombre del servicio en docker-compose
   port: 3306,
   username: "root",
   password: "password",
