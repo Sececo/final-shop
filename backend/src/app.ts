@@ -26,5 +26,3 @@ app.use('/api/v1/jeans', jeanController);
     console.error('Unable to connect to the database:', error);
   }
 })();
-
-export default app;
