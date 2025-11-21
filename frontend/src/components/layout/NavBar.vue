@@ -1,52 +1,61 @@
 <template>
   <nav class="navbar">
-    <router-link to="/" class="kicker">Inicio</router-link>
-    <router-link to="/productos" class="kicker">Productos</router-link>
-    <a href="#" class="kicker">Contacto</a>
-    <button class="btn" @click="$emit('open-cart')">
-      Carrito <span v-if="count>0" style="margin-left:8px; font-weight:700;">({{ count }})</span>
-    </button>
+    <div class="navbar__logo">Final Shop</div>
+    <div class="navbar__actions">
+      <router-link to="/productos" class="navbar__btn">Productos</router-link>
+      <button class="navbar__btn" @click="onOpenCart">Carrito</button>
+    </div>
   </nav>
 </template>
 
-<script lang="ts">
-import { computed } from 'vue';
-import { useCart } from '../../composables/useCart';
-export default {
-  name: 'NavBar',
-  setup() {
-    const { cart } = useCart();
-    const count = computed(()=> cart.reduce((s:any,i:any)=> s + i.qty, 0));
-    return { count };
-  }
-};
+<script setup>
+defineProps(['onOpenCart'])
 </script>
 
 <style scoped>
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   display: flex;
-  gap: 18px;
   align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ececec;
 }
-.kicker {
-  color: var(--muted);
-  text-decoration: none;
-  padding: 6px 10px;
+.navbar__logo {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #181818;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+.navbar__actions {
+  display: flex;
+  gap: 1rem;
+}
+.navbar__btn {
+  background: #fff;
+  color: #181818;
+  border: 1px solid #181818;
   border-radius: 8px;
-}
-.kicker.router-link-active {
-  color: var(--text);
-  background: rgba(255,255,255,0.02);
-}
-.btn {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 0.5rem 1.3rem;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition:
+    background 0.2s,
+    color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
 }
-.btn:hover {
-  background-color: var(--primary-dark);
+.navbar__btn:hover {
+  background: #181818;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+  transform: scale(1.04);
 }
 </style>

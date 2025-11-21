@@ -6,6 +6,7 @@ import './styles/variables.css';
 import './styles/design-tokens/colors.css';
 import './styles/globals.css';
 import './styles/theme.css';
+import './assets/styles.css';
 
 const app = createApp(App);
 app.use(createPinia());

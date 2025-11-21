@@ -1,25 +1,22 @@
 <template>
-  <footer class="footer">
-    <div class="container">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
-        <div>© 2025 Final Shop</div>
-        <div class="kicker">Blanco y negro • Minimal</div>
-      </div>
-    </div>
+  <footer class="main-footer">
+    <span>© 2025 Final Shop. Todos los derechos reservados.</span>
   </footer>
 </template>
 
-<script lang="ts">
-export default { name: 'SiteFooter' };
-</script>
+<script setup></script>
 
 <style scoped>
-.footer {
-  display:flex;
-  justify-content:space-between;
-  padding:18px 24px;
-  color:var(--muted);
-  border-top:1px solid rgba(255,255,255,0.03);
+.main-footer {
+  background: #fff;
+  color: #181818;
+  text-align: center;
+  padding: 0.7rem 0;
+  border-top: 1px solid #ececec;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-radius: 12px 12px 0 0;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin: 0;
 }
-.links a { margin-left:12px; color:var(--muted); text-decoration:none; }
 </style>

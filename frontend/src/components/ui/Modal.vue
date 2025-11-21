@@ -1,49 +1,36 @@
 <template>
-  <div class="modal" @click.self="$emit('close')" style="position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:80;">
-    <div style="width:100%; max-width:720px; background:var(--white); color:var(--text); border-radius:12px; padding:18px; box-shadow:var(--shadow);">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <div style="font-weight:800;"> <slot name="title"></slot> </div>
-        <button class="btn secondary" @click="$emit('close')">Cerrar</button>
-      </div>
-      <div style="margin-bottom:12px;"><slot name="body"></slot></div>
-      <div style="display:flex; justify-content:flex-end; gap:8px;"><slot name="footer"></slot></div>
+  <div class="modal-backdrop" v-if="visible">
+    <div class="modal-content">
+      <slot />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-export default { name: 'UiModal' };
+<script setup>
+defineProps({ visible: Boolean })
 </script>
 
 <style scoped>
-.modal-overlay {
+.modal-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(34,34,34,0.18);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+  transition: background 0.2s;
 }
-
 .modal-content {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: var(--color-bg-card);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--color-shadow-hover);
+  animation: modalIn 0.25s;
 }
-
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
+@keyframes modalIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 </style>

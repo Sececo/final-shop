@@ -1,51 +1,39 @@
 <template>
-  <header class="site-header">
-    <div class="container header-row">
-      <div class="brand">
-        <div class="logo">FS</div>
-        <div>
-          <div>Final Shop</div>
-          <small class="kicker">Colección minimal</small>
-        </div>
-      </div>
-      <slot name="nav" />
+  <header class="header">
+    <div class="header__title">
+      <slot />
+    </div>
+    <div class="header__user">
+      <!-- Aquí puedes poner el nombre del usuario y un icono -->
+      <span>Usuario</span>
     </div>
   </header>
 </template>
 
-<script lang="ts">
-export default { name: 'SiteHeader' };
-</script>
+<script setup></script>
 
 <style scoped>
-.site-header {
+.header {
+  position: fixed;
+  left: 220px;
+  top: 0;
+  right: 0;
+  height: 64px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  color: var(--text);
+  padding: 0 2rem;
+  z-index: 100;
 }
-.header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.header__title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
 }
-.brand {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.logo {
-  font-weight: 800;
-  letter-spacing: 2px;
-  font-size: 24px;
-  margin-right: 8px;
-}
-.kicker {
-  font-size: 12px;
-  color: rgba(255,255,255,0.7);
+.header__user {
+  font-size: 1rem;
+  color: #111;
 }
 </style>

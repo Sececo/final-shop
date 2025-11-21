@@ -14,6 +14,11 @@
     <div v-else>
       <ProductList :products="filtered" @add="add" />
     </div>
+
+    <section class="products-section">
+      <h2>Productos destacados</h2>
+      <ProductList :products="products" @add="addToCart" />
+    </section>
   </div>
 </template>
 
@@ -42,4 +47,16 @@ export default {
 
 <style scoped>
 h2 { color:var(--text); margin-bottom:18px; }
+.products-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+.products-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #181818;
+  margin-bottom: 2rem;
+  text-align: left;
+}
 </style>

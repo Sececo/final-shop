@@ -1,20 +1,32 @@
 <template>
-  <button :class="['btn', variant]" @click="$emit('click')"><slot /></button>
+  <button class="custom-btn" :type="type">
+    <slot />
+  </button>
 </template>
 
-<script setup lang="ts">
-import { defineProps } from 'vue';
-const props = defineProps({ variant: { type: String, default: 'primary' }});
+<script setup>
+defineProps({
+  type: { type: String, default: 'button' }
+})
 </script>
 
 <style scoped>
-.btn {
-  padding: 8px 14px;
-  border-radius: 10px;
+.custom-btn {
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
   border: none;
+  border-radius: 32px;
+  padding: 0.8rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 700;
+  box-shadow: var(--color-shadow);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  letter-spacing: 1px;
 }
-.btn.primary { background: var(--accent); color: #000; }
-.btn.ghost { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.06); }
+.custom-btn:hover {
+  background: var(--color-btn-bg-hover);
+  box-shadow: var(--color-shadow-hover);
+  transform: translateY(-2px) scale(1.05);
+}
 </style>

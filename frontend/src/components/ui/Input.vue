@@ -6,7 +6,7 @@
       :type="type"
       v-model="modelValue"
       @input="$emit('update:modelValue', modelValue)"
-      class="input-field"
+      class="custom-input"
       :placeholder="placeholder"
     />
     <span v-if="errorMessage" class="error-message">{{ errorMessage }}</span>
@@ -60,18 +60,21 @@ export default defineComponent({
   font-weight: bold;
 }
 
-.input-field {
-  padding: 0.5rem;
-  border: 1px solid #000;
-  border-radius: 4px;
+.custom-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-primary);
   font-size: 1rem;
-  color: #000;
-  background-color: #fff;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: var(--color-shadow);
 }
-
-.input-field:focus {
+.custom-input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: var(--color-shadow-hover);
   outline: none;
-  border-color: #000;
 }
 
 .error-message {
